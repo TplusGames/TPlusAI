@@ -20,6 +20,8 @@ namespace TPlus.AI
 
         public override void StateUpdate()
         {
+            _aismIdle.Info.VisionSensor.PerformVisionScan();
+            
             _timer -= Time.deltaTime * 100f;
             var distance = Vector3.Distance(_aismIdle.Info.AI.transform.position, _destination);
             if (distance < 0.1f || _timer <= 0)

@@ -1,35 +1,38 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectableObjectManager : MonoBehaviour
+namespace TPlus.AI
 {
-    public static DetectableObjectManager Instance;
-
-    private List<DetectableObject> _detectableObjects = new List<DetectableObject>();
-
-    private void Awake()
+    public class DetectableObjectManager : MonoBehaviour
     {
-        if (Instance == null)
+        public static DetectableObjectManager Instance;
+
+        private List<AI_Base> _detectableObjects = new List<AI_Base>();
+
+        private void Awake()
         {
-            Instance = this;
-            return;
+            if (Instance == null)
+            {
+                Instance = this;
+                return;
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    }
 
-    public void RegisterDetectableObject(DetectableObject obj)
-    {
-        _detectableObjects.Add(obj);
-    }
+        public void RegisterDetectableObject(AI_Base obj)
+        {
+            _detectableObjects.Add(obj);
+        }
 
-    public void UnregisterDetectableObject(DetectableObject obj)
-    {
-        _detectableObjects.Remove(obj);
-    }
+        public void UnregisterDetectableObject(AI_Base obj)
+        {
+            _detectableObjects.Remove(obj);
+        }
 
-    public List<DetectableObject> GetAllDetectableObjects()
-    {
-        return _detectableObjects;
+        public List<AI_Base> GetAllDetectableObjects()
+        {
+            return _detectableObjects;
+        }
     }
 }
+

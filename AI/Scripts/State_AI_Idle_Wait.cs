@@ -19,6 +19,8 @@ namespace TPlus.AI
 
         public override void StateUpdate()
         {
+            _aismIdle.Info.VisionSensor.PerformVisionScan();
+            
             _timer -= Time.deltaTime * 100f;
 
             if (_timer <= 0)
